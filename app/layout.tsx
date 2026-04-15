@@ -3,7 +3,7 @@ import "./globals.css";
 import WhatsAppButton from "@/components/WhatsAppButton";
 
 export const metadata: Metadata = {
-  title: "Adib Services | منصة خدمات شاملة",
+  title: "ADIB | منصة خدمات شاملة",
   description:
     "منصة خدمات شاملة للتصميم والتوصيل والخدمات حسب الطلب في مكان واحد.",
   keywords: [

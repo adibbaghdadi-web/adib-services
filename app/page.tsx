@@ -192,7 +192,7 @@ export default function HomePage() {
       <section className="mx-auto max-w-7xl px-4 py-20">
         <SectionTitle
           eyebrow="لماذا نحن"
-          title="لماذا تختار Adib Services؟"
+          title="لماذا تختار ADIB؟"
           description="لأن الهدف ليس فقط عرض الخدمات، بل تنفيذها بسرعة ووضوح وبطريقة تجعل العميل مرتاحًا من أول خطوة."
           centered
         />

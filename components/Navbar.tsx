@@ -38,7 +38,7 @@ export default function Navbar() {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         <Link href="/" className="text-2xl font-extrabold tracking-tight text-white">
-          Adib Services
+          ADIB
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
