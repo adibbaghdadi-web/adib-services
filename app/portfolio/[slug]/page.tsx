@@ -7,9 +7,9 @@ import { notFound } from "next/navigation";
 export default async function PortfolioDetailsPage({
   params,
 }: {
-  params: Promise<{ slug: string }>;
+  params: { slug: string };
 }) {
-  const { slug } = await params;
+  const { slug } = params;
 
   const item = portfolioItems.find((work) => work.slug === slug);
 
