@@ -38,15 +38,15 @@ export default function Navbar() {
       }`}
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
-<Link href="/">
-  <Image 
-    src="/logo.svg" 
-    alt="ADIB" 
-    width={45} 
-    height={45} 
-    className="logo"
-  />
-</Link>
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/logo.svg"
+            alt="ADIB"
+            width={45}
+            height={45}
+            className="logo"
+          />
+        </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
           {links.map((link) => {
