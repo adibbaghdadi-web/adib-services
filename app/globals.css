@@ -30,3 +30,11 @@ a {
   background: rgba(255,255,255,0.18);
   color: white;
 }
+.logo {
+  transition: 0.3s;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+  filter: drop-shadow(0 0 6px #00ff88);
+}

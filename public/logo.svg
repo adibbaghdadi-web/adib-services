@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 2000 2000">
+  <!-- Generator: Adobe Illustrator 30.3.0, SVG Export Plug-In . SVG Version: 2.1.3 Build 182)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #0a8f4f;
+      }
+
+      .st1, .st2, .st3 {
+        stroke: #000;
+      }
+
+      .st1, .st2, .st4 {
+        fill: none;
+      }
+
+      .st1, .st4 {
+        stroke-width: 2px;
+      }
+
+      .st2 {
+        stroke-width: 9px;
+      }
+
+      .st4 {
+        stroke: #07070a;
+      }
+    </style>
+  </defs>
+  <rect class="st3" width="2000" height="2000"/>
+  <g>
+    <polyline class="st0" points="553.13 210.07 59.93 1701.7 725.42 1701.7 725.42 67.28 600.34 67.28 553.13 210.07"/>
+    <polyline class="st4" points="552.13 209.07 58.93 1700.7 724.42 1700.7 724.42 66.28 599.34 66.28 552.13 209.07"/>
+    <polyline class="st1" points="553.13 210.07 59.93 1701.7 725.42 1701.7 725.42 67.28 600.34 67.28 553.13 210.07"/>
+  </g>
+  <g>
+    <polyline class="st0" points="834.07 1374.85 1293.25 1375.44 1575.1 1932.25 1940.07 1932.72 1039.71 162.46 835.64 162.2 834.07 1379.42"/>
+    <polyline class="st4" points="833.07 1373.85 1292.25 1374.44 1574.1 1931.25 1939.07 1931.72 1038.71 161.46 834.64 161.2 833.07 1378.42"/>
+    <polyline class="st4" points="834.07 1374.85 1293.25 1375.44 1575.1 1932.25 1940.07 1932.72 1039.71 162.46 835.64 162.2 834.07 1379.42"/>
+  </g>
+  <g>
+    <polygon points="729.07 1100.25 601.42 431.39 1217.21 704.79 729.07 1100.25"/>
+    <polygon class="st4" points="728.07 1099.25 600.42 430.39 1216.21 703.79 728.07 1099.25"/>
+    <polygon class="st2" points="729.07 1100.25 601.42 431.39 1217.21 704.79 729.07 1100.25"/>
+  </g>
+</svg>
