@@ -47,7 +47,7 @@ export default function Services() {
             <button
   onClick={() =>
     window.open("https://wa.me/905362966530?text=مرحبا اريد طلب خدمة", "_blank")
-
+ }
   className="w-full bg-green-500 hover:bg-green-600 transition py-2 rounded-lg"
 >
   اطلب الآن
