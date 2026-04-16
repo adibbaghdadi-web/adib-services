@@ -37,13 +37,13 @@ export default function Navbar() {
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 backdrop-blur-md bg-black/30 border-b border-white/10">
         <Link href="/" className="flex items-center">
           <Image
             src="/logo.svg"
             alt="ADIB"
-            width={45}
-            height={45}
+            width={55}
+            height={55}
             className="logo"
           />
         </Link>
