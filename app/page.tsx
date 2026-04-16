@@ -9,6 +9,7 @@ import ServiceCard from "@/components/ServiceCard";
 import AnimatedCard from "@/components/AnimatedCard";
 import { services } from "@/data/services";
 import { serviceCategories } from "@/data/service-categories";
+import Services from "@/components/Services";
 
 const highlights = [
   {
