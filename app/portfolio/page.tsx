@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
@@ -15,7 +14,7 @@ export default function PortfolioPage() {
           <SectionHeader
             eyebrow="الأعمال"
             title="نماذج من أعمالي"
-            description="مجموعة مختارة من الأعمال التي تعكس أسلوبي في التصميم والترتيب البصري والتنفيذ."
+            description="هذه بعض الأعمال التي تعكس أسلوبي في الترتيب البصري والتنفيذ بشكل نظيف واحترافي."
             centered
           />
         </div>
@@ -27,7 +26,9 @@ export default function PortfolioPage() {
             {portfolioItems.map((item) => (
               <article key={item.id} className="portfolio-card">
                 <div className="portfolio-preview">
-                  <Image src="/logo.svg" alt={item.title} width={86} height={86} />
+                  <div className="portfolio-preview-inner">
+                    <span className="portfolio-preview-letter">A</span>
+                  </div>
                 </div>
 
                 <div className="portfolio-content">
