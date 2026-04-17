@@ -1,7 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import { useSearchParams } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
@@ -20,18 +19,11 @@ function serviceSlugToLabel(slug: string) {
 }
 
 export default function RequestPage() {
-  const searchParams = useSearchParams();
-  const prefilledService = searchParams.get("service") || "";
-
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [serviceType, setServiceType] = useState(
-    prefilledService === "food-delivery" ? "توصيل مطاعم" : "خدمة رقمية"
-  );
-  const [service, setService] = useState(
-    prefilledService ? serviceSlugToLabel(prefilledService) : ""
-  );
+  const [serviceType, setServiceType] = useState("خدمة رقمية");
+  const [service, setService] = useState("");
   const [city, setCity] = useState("");
   const [location, setLocation] = useState("");
   const [details, setDetails] = useState("");
@@ -39,6 +31,20 @@ export default function RequestPage() {
   const [restaurantName, setRestaurantName] = useState("");
   const [orderCost, setOrderCost] = useState("");
   const [deliveryFee, setDeliveryFee] = useState("10");
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const serviceParam = params.get("service") || "";
+
+    if (serviceParam) {
+      if (serviceParam === "food-delivery") {
+        setServiceType("توصيل مطاعم");
+      } else {
+        setServiceType("خدمة رقمية");
+        setService(serviceSlugToLabel(serviceParam));
+      }
+    }
+  }, []);
 
   const totalPrice = Number(orderCost || 0) + Number(deliveryFee || 0);
 
@@ -118,7 +124,9 @@ export default function RequestPage() {
                 <p>
                   في خدمة توصيل المطاعم:
                   <br />
-                  <span className="highlight-text">السعر النهائي = سعر الطلب + سعر التوصيل</span>
+                  <span className="highlight-text">
+                    السعر النهائي = سعر الطلب + سعر التوصيل
+                  </span>
                 </p>
               </div>
             </div>
