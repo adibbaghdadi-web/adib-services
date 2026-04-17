@@ -3,6 +3,7 @@ export type PortfolioItem = {
   title: string;
   category: string;
   description: string;
+  image: string;
 };
 
 export const portfolioItems: PortfolioItem[] = [
@@ -12,6 +13,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "هوية بصرية",
     description:
       "تصميم هوية بصرية حديثة ونظيفة لمطعم بأسلوب احترافي يعكس البراند بشكل قوي.",
+    image: "/images/brand1.jpg",
   },
   {
     id: 2,
@@ -19,6 +21,7 @@ export const portfolioItems: PortfolioItem[] = [
     category: "سوشيال ميديا",
     description:
       "تصميم بوست ترويجي احترافي مناسب للعروض والحملات الإعلانية على السوشيال ميديا.",
+    image: "/images/post1.jpg",
   },
   {
     id: 3,
@@ -26,5 +29,6 @@ export const portfolioItems: PortfolioItem[] = [
     category: "شعار",
     description:
       "شعار نظيف ومميز قابل للاستخدام الرقمي ويعطي حضورًا بصريًا واضحًا.",
+    image: "/images/logo1.jpg",
   },
 ];

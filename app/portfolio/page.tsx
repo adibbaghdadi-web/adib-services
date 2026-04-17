@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionHeader from "@/components/SectionHeader";
@@ -38,10 +39,13 @@ export default function PortfolioPage() {
           <div className="grid-3">
             {portfolioItems.map((item) => (
               <article key={item.id} className="portfolio-card portfolio-card-strong">
-                <div className="portfolio-preview portfolio-preview-strong">
-                  <div className="portfolio-preview-inner">
-                    <span className="portfolio-preview-letter">A</span>
-                  </div>
+                <div className="portfolio-image-wrap">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    fill
+                    className="portfolio-image"
+                  />
                 </div>
 
                 <div className="portfolio-content">
