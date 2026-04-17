@@ -1,17 +1,23 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SectionTitle from "@/components/SectionTitle";
 import { siteConfig } from "@/data/site";
 
 export default function RequestPage() {
+  const searchParams = useSearchParams();
+  const prefilledService = searchParams.get("service") || "";
+
   const [fullName, setFullName] = useState("");
   const [phone, setPhone] = useState("");
   const [email, setEmail] = useState("");
-  const [serviceType, setServiceType] = useState("خدمة رقمية");
-  const [service, setService] = useState("");
+  const [serviceType, setServiceType] = useState(
+    prefilledService === "food-delivery" ? "توصيل مطاعم" : "خدمة رقمية"
+  );
+  const [service, setService] = useState(prefilledService);
   const [city, setCity] = useState("");
   const [location, setLocation] = useState("");
   const [details, setDetails] = useState("");
@@ -20,8 +26,7 @@ export default function RequestPage() {
   const [orderCost, setOrderCost] = useState("");
   const [deliveryFee, setDeliveryFee] = useState("");
 
-  const totalPrice =
-    Number(orderCost || 0) + Number(deliveryFee || 0);
+  const totalPrice = Number(orderCost || 0) + Number(deliveryFee || 0);
 
   const whatsappUrl = useMemo(() => {
     const message =
@@ -78,7 +83,7 @@ export default function RequestPage() {
           <SectionTitle
             eyebrow="طلب خدمة"
             title="أرسل طلبك بشكل مرتب"
-            description="اختر نوع الطلب، واملأ التفاصيل بوضوح، ثم أرسل الطلب عبر واتساب من هذا المكان فقط."
+            description="اختر نوع الطلب، واكتب التفاصيل بوضوح، ثم أرسل الطلب عبر واتساب من هذا المكان فقط."
             centered
           />
         </div>
@@ -160,7 +165,7 @@ export default function RequestPage() {
                     <input
                       value={service}
                       onChange={(e) => setService(e.target.value)}
-                      placeholder="مثال: تصميم بوستات"
+                      placeholder="مثال: social-media-design"
                       className="w-full rounded-2xl border border-white/10 bg-[#0f0f15] px-4 py-3 outline-none transition focus:border-white/25"
                     />
                   </div>

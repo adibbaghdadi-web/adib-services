@@ -36,8 +36,8 @@ export default function HomePage() {
             </span>
 
             <h1 className="mb-6 text-5xl font-extrabold leading-tight md:text-7xl">
-              نُحوّل فكرتك إلى
-              <span className="block text-green-400">نتيجة حقيقية</span>
+              اطلب خدمتك خلال دقائق
+              <span className="block text-green-400">وننفذها لك بشكل احترافي</span>
             </h1>
 
             <p className="mx-auto mb-8 max-w-3xl text-lg leading-8 text-white/70">
@@ -47,17 +47,17 @@ export default function HomePage() {
 
             <div className="flex flex-wrap items-center justify-center gap-4">
               <Link
-                href="/services"
-                className="rounded-xl bg-white px-6 py-3 font-semibold text-black shadow-[0_0_20px_rgba(255,255,255,0.18)] transition hover:scale-105"
+                href="/request"
+                className="rounded-xl bg-green-500 px-8 py-4 font-bold text-black shadow-[0_0_20px_rgba(34,197,94,0.35)] transition hover:scale-105"
               >
-                استعرض الخدمات
+                اطلب الآن
               </Link>
 
               <Link
-                href="/request"
-                className="rounded-xl border border-white/15 px-6 py-3 font-semibold text-white transition hover:bg-white/10"
+                href="/services"
+                className="rounded-xl border border-white/15 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
               >
-                اطلب الآن
+                استعرض الخدمات
               </Link>
             </div>
           </div>
@@ -82,9 +82,9 @@ export default function HomePage() {
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {services.map((service) => (
-            <ServiceCard key={service.slug} service={service} />
-          ))}
+          {services.slice(0, 4).map((service) => (
+  <ServiceCard key={service.slug} service={service} />
+))}
         </div>
       </section>
 

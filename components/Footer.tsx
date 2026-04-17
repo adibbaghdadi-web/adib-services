@@ -18,6 +18,7 @@ export default function Footer() {
           <div className="flex flex-col gap-3 text-white/70">
             <Link href="/">الرئيسية</Link>
             <Link href="/services">الخدمات</Link>
+            <Link href="/portfolio">الأعمال</Link>
             <Link href="/pricing">الأسعار</Link>
             <Link href="/about">من نحن</Link>
             <Link href="/contact">التواصل</Link>

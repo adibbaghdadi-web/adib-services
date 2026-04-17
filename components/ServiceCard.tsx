@@ -22,7 +22,7 @@ export default function ServiceCard({ service }: { service: ServiceItem }) {
       </ul>
 
       <Link
-        href="/request"
+        href={`/request?service=${service.slug}`}
         className="inline-flex rounded-xl bg-white px-5 py-3 font-semibold text-black transition hover:scale-[1.03]"
       >
         اطلب هذه الخدمة
