@@ -657,3 +657,34 @@ img {
 .cta-strong {
   background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.03));
 }
+.services-hero,
+.portfolio-hero {
+  min-height: 52vh;
+  display: flex;
+  align-items: center;
+}
+
+.portfolio-card-strong {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-card-strong::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top, rgba(34, 197, 94, 0.08), transparent 55%);
+  pointer-events: none;
+}
+
+.portfolio-preview-strong {
+  background:
+    radial-gradient(circle at top, rgba(34, 197, 94, 0.1), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.015));
+}
+
+.portfolio-card .portfolio-content h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  font-size: 26px;
+}

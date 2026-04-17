@@ -9,23 +9,36 @@ export default function PortfolioPage() {
     <main>
       <Navbar />
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="الأعمال"
-            title="نماذج من أعمالي"
-            description="هذه بعض الأعمال التي تعكس أسلوبي في الترتيب البصري والتنفيذ بشكل نظيف واحترافي."
-            centered
-          />
+      <section className="hero portfolio-hero">
+        <div className="hero-bg" />
+        <div className="container hero-content">
+          <span className="hero-badge">الأعمال</span>
+
+          <h1 className="hero-title">
+            نماذج تعكس
+            <span className="hero-highlight"> أسلوبي في التنفيذ</span>
+          </h1>
+
+          <p className="hero-subtitle">
+            هنا بعض الأعمال التي تعطيك فكرة عن الشكل البصري، الترتيب، وطريقة إخراج
+            المشروع بشكل نظيف واحترافي.
+          </p>
         </div>
       </section>
 
       <section className="page-section">
         <div className="container">
+          <SectionHeader
+            eyebrow="نماذج مختارة"
+            title="بعض الأعمال التي يمكن البناء عليها"
+            description="هذه النماذج ليست مجرد عرض، بل مثال على الأسلوب، الوضوح، والترتيب."
+            centered
+          />
+
           <div className="grid-3">
             {portfolioItems.map((item) => (
-              <article key={item.id} className="portfolio-card">
-                <div className="portfolio-preview">
+              <article key={item.id} className="portfolio-card portfolio-card-strong">
+                <div className="portfolio-preview portfolio-preview-strong">
                   <div className="portfolio-preview-inner">
                     <span className="portfolio-preview-letter">A</span>
                   </div>
@@ -44,15 +57,22 @@ export default function PortfolioPage() {
 
       <section className="page-section">
         <div className="container">
-          <div className="info-box cta-box">
+          <div className="info-box cta-box cta-strong">
             <h3>هل تريد عملًا مشابهًا؟</h3>
             <p>
-              أرسل فكرتك أو نوع المشروع الذي تريده، وسأرتبه لك بأسلوب يناسبك ويخدم
-              هدفك.
+              أرسل نوع المشروع أو الفكرة التي تريد تنفيذها، وسأرتب لك النتيجة بشكل
+              يناسبك ويعطي مشروعك حضورًا أقوى.
             </p>
-            <Link href="/request" className="button button-light">
-              ابدأ مشروعك الآن
-            </Link>
+
+            <div className="hero-buttons">
+              <Link href="/request" className="button button-primary">
+                ابدأ مشروعك الآن
+              </Link>
+
+              <Link href="/services" className="button button-outline">
+                استعرض الخدمات
+              </Link>
+            </div>
           </div>
         </div>
       </section>

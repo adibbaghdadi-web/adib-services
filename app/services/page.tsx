@@ -5,24 +5,50 @@ import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/data/services";
 import Link from "next/link";
 
+const serviceBenefits = [
+  "توضيح كامل للخدمة قبل الطلب",
+  "تنفيذ سريع ومنظم",
+  "أسلوب واضح ومباشر",
+  "تجربة مرتبة من البداية للنهاية",
+];
+
 export default function ServicesPage() {
   return (
     <main>
       <Navbar />
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="الخدمات"
-            title="كل الخدمات في مكان واحد"
-            description="خدمات مرتبة وواضحة تشمل التصميم، تطوير المواقع، الذكاء الاصطناعي، وتوصيل الطلبات."
-            centered
-          />
+      <section className="hero services-hero">
+        <div className="hero-bg" />
+        <div className="container hero-content">
+          <span className="hero-badge">الخدمات</span>
+
+          <h1 className="hero-title">
+            كل الخدمات في
+            <span className="hero-highlight"> مكان واحد</span>
+          </h1>
+
+          <p className="hero-subtitle">
+            خدمات مرتبة وواضحة تشمل التصميم، تطوير المواقع، الذكاء الاصطناعي،
+            وتوصيل الطلبات، مع تجربة طلب بسيطة ومباشرة.
+          </p>
+
+          <div className="hero-features">
+            {serviceBenefits.map((item) => (
+              <span key={item}>✔ {item}</span>
+            ))}
+          </div>
         </div>
       </section>
 
       <section className="page-section">
         <div className="container">
+          <SectionHeader
+            eyebrow="الخدمات المتاحة"
+            title="اختر الخدمة التي تناسبك"
+            description="كل خدمة موضحة بشكل مرتب مع السعر المبدئي ومدة التنفيذ وطريقة الطلب."
+            centered
+          />
+
           <div className="grid-2">
             {services.map((service) => (
               <ServiceCard key={service.slug} service={service} />
@@ -31,18 +57,24 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      <section className="page-section">
+      <section className="page-section section-dark">
         <div className="container">
-          <div className="info-box cta-box">
-            <h3>لم تجد الخدمة التي تريدها؟</h3>
+          <div className="info-box cta-box cta-strong">
+            <h3>هل عندك طلب مختلف؟</h3>
             <p>
-              أرسل طلبك بتفاصيله، وإذا كانت الخدمة ممكنة سأرتبها لك بأفضل شكل وأوضح
-              سعر.
+              إذا كانت خدمتك غير موجودة ضمن القائمة، يمكنك إرسال طلب خاص وسأراجع
+              التفاصيل وأرتب لك الحل المناسب.
             </p>
 
-            <Link href="/request" className="button button-light">
-              أرسل طلبًا خاصًا
-            </Link>
+            <div className="hero-buttons">
+              <Link href="/request" className="button button-primary">
+                أرسل طلبًا خاصًا
+              </Link>
+
+              <Link href="/contact" className="button button-outline">
+                تواصل أولًا
+              </Link>
+            </div>
           </div>
         </div>
       </section>
