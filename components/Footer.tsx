@@ -3,19 +3,19 @@ import { siteConfig } from "@/data/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#06060a]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3">
+    <footer className="site-footer">
+      <div className="container footer-grid">
         <div>
-          <h3 className="mb-3 text-2xl font-extrabold">{siteConfig.name}</h3>
-          <p className="max-w-sm leading-8 text-white/60">
-            خدمات رقمية احترافية بتنفيذ سريع، شكل مرتب، وتجربة واضحة من أول زيارة حتى
-            إرسال الطلب.
+          <h3>{siteConfig.name}</h3>
+          <p>
+            خدمات رقمية وعملية بشكل احترافي، مع تجربة واضحة من أول زيارة حتى إرسال
+            الطلب.
           </p>
         </div>
 
         <div>
-          <h4 className="mb-3 text-lg font-bold">روابط سريعة</h4>
-          <div className="flex flex-col gap-3 text-white/70">
+          <h4>روابط سريعة</h4>
+          <nav className="footer-links">
             <Link href="/">الرئيسية</Link>
             <Link href="/services">الخدمات</Link>
             <Link href="/portfolio">الأعمال</Link>
@@ -23,12 +23,12 @@ export default function Footer() {
             <Link href="/about">من نحن</Link>
             <Link href="/contact">التواصل</Link>
             <Link href="/request">طلب خدمة</Link>
-          </div>
+          </nav>
         </div>
 
         <div>
-          <h4 className="mb-3 text-lg font-bold">التواصل</h4>
-          <div className="space-y-3 text-white/70">
+          <h4>التواصل</h4>
+          <div className="footer-contact">
             <p>{siteConfig.email}</p>
             <a href={siteConfig.instagram} target="_blank" rel="noreferrer">
               {siteConfig.instagramHandle}
@@ -38,7 +38,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-white/10 px-4 py-5 text-center text-sm text-white/45">
+      <div className="footer-bottom">
         © {new Date().getFullYear()} {siteConfig.name} — جميع الحقوق محفوظة
       </div>
     </footer>

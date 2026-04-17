@@ -1,17 +1,16 @@
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SectionTitle from "@/components/SectionTitle";
+import SectionHeader from "@/components/SectionHeader";
 import { siteConfig } from "@/data/site";
 
 export default function ContactPage() {
   return (
-    <main className="min-h-screen bg-[#07070a] text-white">
+    <main>
       <Navbar />
 
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.1),transparent_35%)]" />
-        <div className="mx-auto max-w-7xl px-4 py-20">
-          <SectionTitle
+      <section className="page-section">
+        <div className="container">
+          <SectionHeader
             eyebrow="التواصل"
             title="تواصل واضح ومباشر"
             description="إذا عندك استفسار أو تريد مناقشة مشروع قبل الطلب، استخدم وسائل التواصل التالية."
@@ -20,28 +19,30 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-20">
-        <div className="grid gap-6 md:grid-cols-3">
-          <div className="rounded-[28px] border border-white/10 bg-white/5 p-8">
-            <h3 className="mb-3 text-2xl font-bold">البريد الإلكتروني</h3>
-            <p className="leading-8 text-white/70">{siteConfig.email}</p>
-          </div>
+      <section className="page-section">
+        <div className="container">
+          <div className="grid-3">
+            <div className="card">
+              <h3>البريد الإلكتروني</h3>
+              <p className="card-description">{siteConfig.email}</p>
+            </div>
 
-          <div className="rounded-[28px] border border-white/10 bg-white/5 p-8">
-            <h3 className="mb-3 text-2xl font-bold">إنستغرام</h3>
-            <a
-              href={siteConfig.instagram}
-              target="_blank"
-              rel="noreferrer"
-              className="leading-8 text-white/70"
-            >
-              {siteConfig.instagramHandle}
-            </a>
-          </div>
+            <div className="card">
+              <h3>إنستغرام</h3>
+              <a
+                href={siteConfig.instagram}
+                target="_blank"
+                rel="noreferrer"
+                className="card-description"
+              >
+                {siteConfig.instagramHandle}
+              </a>
+            </div>
 
-          <div className="rounded-[28px] border border-white/10 bg-white/5 p-8">
-            <h3 className="mb-3 text-2xl font-bold">المدينة</h3>
-            <p className="leading-8 text-white/70">{siteConfig.city}</p>
+            <div className="card">
+              <h3>المدينة</h3>
+              <p className="card-description">{siteConfig.city}</p>
+            </div>
           </div>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import SectionTitle from "@/components/SectionTitle";
+import SectionHeader from "@/components/SectionHeader";
 import ServiceCard from "@/components/ServiceCard";
 import { services } from "@/data/services";
 
@@ -16,56 +16,43 @@ const reasons = [
   },
   {
     title: "تواصل واضح",
-    desc: "العميل يعرف ماذا يطلب، وأنت تعرف ماذا تنفذ، بدون تعقيد أو فوضى.",
+    desc: "العميل يفهم ماذا يطلب، وأنت تفهم ماذا تنفذ، بدون فوضى.",
   },
 ];
 
 export default function HomePage() {
   return (
-    <main className="min-h-screen bg-[#07070a] text-white">
+    <main>
       <Navbar />
 
-      <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,255,255,0.12),transparent_35%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(34,197,94,0.08),transparent_45%)]" />
+      <section className="hero">
+        <div className="container hero-inner">
+          <span className="eyebrow">ADIB</span>
 
-        <div className="relative mx-auto max-w-7xl px-4 py-28">
-          <div className="mx-auto max-w-4xl text-center">
-            <span className="mb-5 inline-block rounded-full border border-white/10 bg-white/5 px-4 py-2 text-sm text-white/70">
-              ADIB
-            </span>
+          <h1>
+            اطلب خدمتك خلال دقائق
+            <span className="hero-accent">وننفذها لك بشكل احترافي</span>
+          </h1>
 
-            <h1 className="mb-6 text-5xl font-extrabold leading-tight md:text-7xl">
-              اطلب خدمتك خلال دقائق
-              <span className="block text-green-400">وننفذها لك بشكل احترافي</span>
-            </h1>
+          <p>
+            خدمات احترافية تشمل التصميم، تطوير المواقع، خدمات الذكاء الاصطناعي،
+            وتوصيل الطلبات، بتجربة مرتبة وواضحة.
+          </p>
 
-            <p className="mx-auto mb-8 max-w-3xl text-lg leading-8 text-white/70">
-              خدمات احترافية تشمل التصميم، تطوير المواقع، وخدمات الذكاء الاصطناعي —
-              بسرعة، جودة، وتجربة مرتبة.
-            </p>
+          <div className="hero-actions">
+            <Link href="/request" className="button button-primary">
+              اطلب الآن
+            </Link>
 
-            <div className="flex flex-wrap items-center justify-center gap-4">
-              <Link
-                href="/request"
-                className="rounded-xl bg-green-500 px-8 py-4 font-bold text-black shadow-[0_0_20px_rgba(34,197,94,0.35)] transition hover:scale-105"
-              >
-                اطلب الآن
-              </Link>
-
-              <Link
-                href="/services"
-                className="rounded-xl border border-white/15 px-6 py-4 font-semibold text-white transition hover:bg-white/10"
-              >
-                استعرض الخدمات
-              </Link>
-            </div>
+            <Link href="/services" className="button button-light">
+              استعرض الخدمات
+            </Link>
           </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-4 py-10">
-        <div className="flex flex-wrap justify-center gap-6 text-sm text-white/60">
+      <section className="benefits">
+        <div className="container benefits-list">
           <span>✔ سرعة في الإنجاز</span>
           <span>✔ جودة عالية</span>
           <span>✔ تجربة مرتبة</span>
@@ -73,56 +60,56 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20">
-        <SectionTitle
-          eyebrow="الخدمات"
-          title="خدمات عملية بشكل احترافي"
-          description="كل خدمة مرتبة بوضوح، بسعر ابتدائي واضح، وتجربة طلب بسيطة بدون تكرار أو إزعاج."
-          centered
-        />
+      <section className="page-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="الخدمات"
+            title="خدمات عملية بشكل احترافي"
+            description="كل خدمة مرتبة بوضوح، بسعر ابتدائي واضح، وتجربة طلب بسيطة بدون تكرار أو إزعاج."
+            centered
+          />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
-          {services.slice(0, 4).map((service) => (
-  <ServiceCard key={service.slug} service={service} />
-))}
+          <div className="grid-2">
+            {services.slice(0, 4).map((service) => (
+              <ServiceCard key={service.slug} service={service} />
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 py-20">
-        <SectionTitle
-          eyebrow="لماذا ADIB"
-          title="واجهة قوية، تنفيذ واضح، ونتيجة تشرف"
-          description="الهدف ليس مجرد موقع جميل، بل موقع يعطي العميل الثقة ويجعله يفهم الخدمة بسرعة."
-          centered
-        />
+      <section className="page-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="لماذا ADIB"
+            title="واجهة قوية، تنفيذ واضح، ونتيجة تشرف"
+            description="الهدف ليس مجرد موقع جميل، بل موقع يعطي العميل الثقة ويجعله يفهم الخدمة بسرعة."
+            centered
+          />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {reasons.map((item) => (
-            <div
-              key={item.title}
-              className="rounded-[28px] border border-white/10 bg-white/5 p-8 transition hover:border-white/20 hover:bg-white/10"
-            >
-              <h3 className="mb-3 text-2xl font-bold">{item.title}</h3>
-              <p className="leading-8 text-white/70">{item.desc}</p>
-            </div>
-          ))}
+          <div className="grid-3">
+            {reasons.map((item) => (
+              <div key={item.title} className="card">
+                <h3>{item.title}</h3>
+                <p className="card-description">{item.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-5xl px-4 py-20">
-        <div className="rounded-[32px] border border-white/10 bg-white/5 p-10 text-center shadow-[0_0_60px_rgba(255,255,255,0.04)]">
-          <h2 className="mb-4 text-4xl font-bold">جاهز نبدأ؟</h2>
-          <p className="mx-auto mb-6 max-w-2xl leading-8 text-white/70">
-            إذا عندك فكرة أو مشروع وتريد تنفيذه بشكل احترافي، ابدأ الآن من صفحة الطلب
-            وسأرتب لك كل شيء بشكل واضح.
-          </p>
+      <section className="page-section">
+        <div className="container">
+          <div className="info-box cta-box">
+            <h3>جاهز نبدأ؟</h3>
+            <p>
+              إذا عندك فكرة أو مشروع وتريد تنفيذه بشكل احترافي، ابدأ الآن من صفحة
+              الطلب وسأرتب لك كل شيء بشكل واضح.
+            </p>
 
-          <Link
-            href="/request"
-            className="rounded-xl bg-white px-6 py-3 font-semibold text-black transition hover:scale-105"
-          >
-            اطلب الخدمة
-          </Link>
+            <Link href="/request" className="button button-light">
+              اطلب الخدمة
+            </Link>
+          </div>
         </div>
       </section>
 
