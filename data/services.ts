@@ -1,87 +1,52 @@
 export type ServiceItem = {
-  id: number;
-  slug: string;
   title: string;
-  category: string;
+  slug: string;
+  shortDescription: string;
   description: string;
-  price: string;
-  duration: string;
+  priceFrom: string;
+  delivery: string;
   features: string[];
-  popular?: boolean;
 };
 
 export const services: ServiceItem[] = [
   {
-    id: 1,
-    slug: "logo-design",
-    title: "تصميم شعار",
-    category: "خدمات رقمية",
-    description: "تصميم شعار احترافي يعبر عن مشروعك بشكل واضح ومميز.",
-    price: "يبدأ من 25$",
-    duration: "1 - 2 يوم",
-    features: ["تصميم احترافي", "أسلوب واضح", "ملائم للهوية التجارية"],
-    popular: true,
+    title: "تصميم سوشيال ميديا",
+    slug: "social-media-design",
+    shortDescription: "بوستات، إعلانات، وعروض بشكل احترافي وجذاب.",
+    description:
+      "تصميم منشورات وإعلانات للسوشيال ميديا بأسلوب حديث وواضح يلفت الانتباه ويخدم الهدف التسويقي.",
+    priceFrom: "$15",
+    delivery: "24 - 48 ساعة",
+    features: ["تصميم احترافي", "أسلوب حديث", "مناسب للإعلانات", "تنفيذ سريع"],
   },
   {
-    id: 2,
-    slug: "social-media-post-design",
-    title: "تصميم بوست سوشيال ميديا",
-    category: "خدمات رقمية",
-    description: "تصميم بوستات وإعلانات جذابة للسوشيال ميديا.",
-    price: "يبدأ من 10$",
-    duration: "خلال 24 ساعة",
-    features: ["تصميم حديث", "مناسب للعروض", "تسليم سريع"],
+    title: "تصميم شعار وهوية",
+    slug: "logo-branding",
+    shortDescription: "شعارات وهوية بصرية نظيفة وقابلة للتطوير.",
+    description:
+      "تصميم شعار احترافي وهوية بصرية تعطي مشروعك شكلًا واضحًا وقويًا وتبني حضورًا بصريًا مميزًا.",
+    priceFrom: "$40",
+    delivery: "2 - 4 أيام",
+    features: ["شعار مميز", "ألوان وهوية", "ملف نظيف", "قابل للاستخدام الرقمي"],
   },
   {
-    id: 3,
-    slug: "photo-editing",
-    title: "تعديل صور",
-    category: "خدمات رقمية",
-    description: "تحسين الصور وتنظيفها وإخراجها بشكل احترافي.",
-    price: "يبدأ من 5$",
-    duration: "خلال ساعات",
-    features: ["تحسين الجودة", "قص وتنظيف", "مظهر احترافي"],
+    title: "تطوير مواقع",
+    slug: "website-development",
+    shortDescription: "مواقع حديثة وسريعة بتجربة استخدام مرتبة.",
+    description:
+      "بناء مواقع حديثة وسريعة تناسب البراندات، الخدمات، أو المشاريع الشخصية مع واجهة قوية وواضحة.",
+    priceFrom: "$120",
+    delivery: "3 - 7 أيام",
+    features: ["تصميم حديث", "سرعة عالية", "مناسب للموبايل", "هيكل احترافي"],
   },
   {
-    id: 4,
-    slug: "meal-delivery",
-    title: "توصيل وجبات",
-    category: "خدمات توصيل",
-    description: "شراء وتوصيل الطلبات من المطاعم إلى موقعك.",
-    price: "يبدأ من 50 ليرة",
-    duration: "30 - 60 دقيقة",
-    features: ["تنفيذ سريع", "مرونة بالموقع", "متابعة مباشرة"],
-    popular: true,
-  },
-  {
-    id: 5,
-    slug: "store-purchase-delivery",
-    title: "شراء طلب من متجر",
-    category: "خدمات توصيل",
-    description: "شراء منتج أو طلب من متجر وتوصيله لك.",
-    price: "حسب الطلب",
-    duration: "خلال نفس اليوم",
-    features: ["شراء حسب الطلب", "توصيل مباشر", "مرونة كاملة"],
-  },
-  {
-    id: 6,
-    slug: "car-arrangement",
-    title: "تنسيق سيارة توصيل",
-    category: "خدمات تنسيق",
-    description: "التواصل مع سائق أو سيارة مناسبة لتوصيلك أو توصيل أغراضك.",
-    price: "حسب المسافة",
-    duration: "خلال نفس اليوم",
-    features: ["تنسيق سريع", "متابعة مباشرة", "حلول حسب الحاجة"],
-  },
-  {
-    id: 7,
-    slug: "special-request",
-    title: "خدمة حسب الطلب",
-    category: "خدمات خاصة",
-    description: "أي خدمة تحتاجها يمكن تنفيذها أو تنسيقها حسب الاتفاق.",
-    price: "حسب الطلب",
-    duration: "حسب الخدمة",
-    features: ["مرونة كاملة", "تنفيذ خاص", "حسب الاتفاق"],
-    popular: true,
+    title: "خدمات الذكاء الاصطناعي",
+    slug: "ai-services",
+    shortDescription: "برومبتات، صور، أفكار، ومساعدة إنتاجية ذكية.",
+    description:
+      "خدمات مبنية على الذكاء الاصطناعي تشمل برومبتات احترافية، أفكار محتوى، وتحسين الإنتاجية البصرية.",
+    priceFrom: "$10",
+    delivery: "خلال ساعات",
+    features: ["برومبتات دقيقة", "أفكار قوية", "تنفيذ سريع", "نتائج عملية"],
   },
 ];

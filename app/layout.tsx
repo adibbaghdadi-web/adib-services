@@ -1,18 +1,18 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
-  title: "ADIB | منصة خدمات شاملة",
-  description:
-    "منصة خدمات شاملة للتصميم والتوصيل والخدمات حسب الطلب في مكان واحد.",
+  title: siteConfig.title,
+  description: siteConfig.description,
   keywords: [
     "ADIB",
     "خدمات",
     "تصميم",
-    "توصيل",
-    "طلبات",
-    "خدمات حسب الطلب",
-    "إسطنبول",
+    "مواقع",
+    "ذكاء اصطناعي",
+    "خدمات رقمية",
+    "Istanbul",
   ],
 };
 
@@ -23,10 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ar" dir="rtl">
-      <body className="bg-[#07070a] text-white antialiased">
-        {children}
-       
-      </body>
+      <body className="bg-[#07070a] text-white antialiased">{children}</body>
     </html>
   );
 }

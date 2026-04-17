@@ -1,44 +1,44 @@
 import Link from "next/link";
+import { siteConfig } from "@/data/site";
 
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10 bg-[#07070a]">
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-10 md:grid-cols-3">
+    <footer className="border-t border-white/10 bg-[#06060a]">
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 md:grid-cols-3">
         <div>
-          <h3 className="mb-3 text-2xl font-extrabold text-white">Adib Services</h3>
-          <p className="leading-8 text-white/60">
-            منصة خدمات شاملة تجمع بين الخدمات الرقمية، التوصيل، التنسيق، والخدمات الخاصة في مكان واحد.
+          <h3 className="mb-3 text-2xl font-extrabold">{siteConfig.name}</h3>
+          <p className="max-w-sm leading-8 text-white/60">
+            خدمات رقمية احترافية بتنفيذ سريع، شكل مرتب، وتجربة واضحة من أول زيارة حتى
+            إرسال الطلب.
           </p>
         </div>
 
         <div>
-          <h4 className="mb-3 text-lg font-bold text-white">روابط سريعة</h4>
-          <div className="flex flex-col gap-2 text-white/60">
-            <Link href="/" className="hover:text-white">الرئيسية</Link>
-            <Link href="/services" className="hover:text-white">الخدمات</Link>
-            <Link href="/pricing" className="hover:text-white">الأسعار</Link>
-            <Link href="/contact" className="hover:text-white">التواصل</Link>
+          <h4 className="mb-3 text-lg font-bold">روابط سريعة</h4>
+          <div className="flex flex-col gap-3 text-white/70">
+            <Link href="/">الرئيسية</Link>
+            <Link href="/services">الخدمات</Link>
+            <Link href="/pricing">الأسعار</Link>
+            <Link href="/about">من نحن</Link>
+            <Link href="/contact">التواصل</Link>
+            <Link href="/request">طلب خدمة</Link>
           </div>
         </div>
 
         <div>
-          <h4 className="mb-3 text-lg font-bold text-white">تواصل مباشر</h4>
-          <div className="flex flex-col gap-2 text-white/60">
-            <a href="https://wa.me/905362966530" target="_blank" rel="noreferrer" className="hover:text-white">
-              واتساب
+          <h4 className="mb-3 text-lg font-bold">التواصل</h4>
+          <div className="space-y-3 text-white/70">
+            <p>{siteConfig.email}</p>
+            <a href={siteConfig.instagram} target="_blank" rel="noreferrer">
+              {siteConfig.instagramHandle}
             </a>
-            <a href="https://instagram.com/adibbaghdadyyy" target="_blank" rel="noreferrer" className="hover:text-white">
-              إنستغرام
-            </a>
-            <a href="mailto:edip.baghdady,99@gmail.com" className="hover:text-white">
-              البريد الإلكتروني
-            </a>
+            <p>{siteConfig.city}</p>
           </div>
         </div>
       </div>
 
-      <div className="border-t border-white/10 py-5 text-center text-sm text-white/45">
-        © 2026 Adib Services - جميع الحقوق محفوظة
+      <div className="border-t border-white/10 px-4 py-5 text-center text-sm text-white/45">
+        © {new Date().getFullYear()} {siteConfig.name} — جميع الحقوق محفوظة
       </div>
     </footer>
   );

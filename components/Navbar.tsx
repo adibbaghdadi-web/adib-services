@@ -4,7 +4,6 @@ import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 
 const links = [
   { href: "/", label: "الرئيسية" },
@@ -21,7 +20,7 @@ export default function Navbar() {
 
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 16);
+      setScrolled(window.scrollY > 8);
     }
 
     onScroll();
@@ -33,22 +32,16 @@ export default function Navbar() {
     <header
       className={`sticky top-0 z-50 transition-all duration-300 ${
         scrolled
-          ? "border-b border-white/10 bg-[#07070a]/85 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.25)]"
+          ? "border-b border-white/10 bg-[#07070a]/85 backdrop-blur-2xl"
           : "bg-transparent"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 backdrop-blur-md bg-black/30 border-b border-white/10">
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4">
         <Link href="/" className="flex items-center">
-          <Image
-            src="/logo.svg"
-            alt="ADIB"
-            width={55}
-            height={55}
-            className="logo"
-          />
+          <Image src="/logo.svg" alt="ADIB" width={52} height={52} className="logo" />
         </Link>
 
-        <nav className="hidden items-center gap-6 md:flex">
+        <nav className="hidden items-center gap-7 md:flex">
           {links.map((link) => {
             const active = pathname === link.href;
 
@@ -70,18 +63,9 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 md:flex">
-          <a
-            href="https://wa.me/905362966530"
-            target="_blank"
-            rel="noreferrer"
-            className="rounded-xl border border-white/15 px-4 py-2 text-sm font-semibold text-white transition hover:bg-white/10"
-          >
-            واتساب
-          </a>
-
           <Link
             href="/request"
-            className="rounded-xl bg-white px-4 py-2 text-sm font-semibold text-black transition hover:scale-[1.03]"
+            className="rounded-xl bg-white px-5 py-2.5 text-sm font-semibold text-black transition hover:scale-[1.03]"
           >
             اطلب الآن
           </Link>
@@ -97,55 +81,38 @@ export default function Navbar() {
         </button>
       </div>
 
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -14 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -14 }}
-            transition={{ duration: 0.22 }}
-            className="border-t border-white/10 bg-[#0b0b10]/95 backdrop-blur-2xl md:hidden"
-          >
-            <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4">
-              {links.map((link) => {
-                const active = pathname === link.href;
+      {menuOpen ? (
+        <div className="border-t border-white/10 bg-[#0b0b10]/95 backdrop-blur-2xl md:hidden">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2 px-4 py-4">
+            {links.map((link) => {
+              const active = pathname === link.href;
 
-                return (
-                  <Link
-                    key={link.href}
-                    href={link.href}
-                    onClick={() => setMenuOpen(false)}
-                    className={`rounded-xl px-4 py-3 text-sm transition ${
-                      active
-                        ? "bg-white text-black"
-                        : "bg-white/5 text-white/80 hover:bg-white/10 hover:text-white"
-                    }`}
-                  >
-                    {link.label}
-                  </Link>
-                );
-              })}
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className={`rounded-xl px-4 py-3 text-sm transition ${
+                    active
+                      ? "bg-white text-black"
+                      : "bg-white/5 text-white/80 hover:bg-white/10 hover:text-white"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
 
-              <a
-                href="https://wa.me/905362966530"
-                target="_blank"
-                rel="noreferrer"
-                className="rounded-xl bg-green-500 px-4 py-3 text-center text-sm font-semibold text-white transition hover:opacity-90"
-              >
-                تواصل واتساب
-              </a>
-
-              <Link
-                href="/request"
-                onClick={() => setMenuOpen(false)}
-                className="rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:opacity-90"
-              >
-                اطلب الآن
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            <Link
+              href="/request"
+              onClick={() => setMenuOpen(false)}
+              className="rounded-xl bg-white px-4 py-3 text-center text-sm font-semibold text-black transition hover:opacity-90"
+            >
+              اطلب الآن
+            </Link>
+          </div>
+        </div>
+      ) : null}
     </header>
   );
 }
