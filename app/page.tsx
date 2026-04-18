@@ -38,6 +38,39 @@ const steps = [
   },
 ];
 
+const testimonials = [
+  {
+    name: "عميل خدمة تصميم",
+    text: "التعامل كان واضحًا جدًا، والتنفيذ أسرع مما توقعت، والشكل النهائي كان مرتبًا فعلاً.",
+  },
+  {
+    name: "عميل موقع",
+    text: "أكثر شيء أعجبني هو أن الطلب كان واضحًا من البداية، وما كان فيه تكرار أو لخبطة.",
+  },
+  {
+    name: "عميل توصيل",
+    text: "الخدمة كانت مباشرة، والسعر مفهوم، والتنفيذ تم بسرعة بدون تعقيد.",
+  },
+];
+
+const faqs = [
+  {
+    question: "هل الأسعار ثابتة؟",
+    answer:
+      "الأسعار المعروضة مبدئية، وقد تتغير حسب التفاصيل، حجم الطلب، ومدة التنفيذ المطلوبة.",
+  },
+  {
+    question: "كيف يتم إرسال الطلب؟",
+    answer:
+      "يتم إرسال الطلب عبر صفحة الطلب، ثم تجهيز رسالة مرتبة تُرسل مباشرة عبر واتساب.",
+  },
+  {
+    question: "هل يمكن طلب خدمة غير موجودة؟",
+    answer:
+      "نعم، يمكنك إرسال طلب خاص، وإذا كانت الخدمة ممكنة سأرتبها لك وأعطيك التفاصيل المناسبة.",
+  },
+];
+
 export default function HomePage() {
   return (
     <main>
@@ -83,7 +116,7 @@ export default function HomePage() {
           <SectionHeader
             eyebrow="الخدمات"
             title="خدمات عملية بشكل احترافي"
-            description="كل خدمة موضحة بشكل واضح، مع طريقة طلب سهلة، وتجربة منظمة."
+            description="كل خدمة موضحة بوضوح، مع طريقة طلب سهلة، وتجربة منظمة."
             centered
           />
 
@@ -136,6 +169,46 @@ export default function HomePage() {
                 <div className="step-number">{step.number}</div>
                 <h3>{step.title}</h3>
                 <p>{step.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section section-dark">
+        <div className="container">
+          <SectionHeader
+            eyebrow="آراء وانطباعات"
+            title="تجربة واضحة تعطي ثقة"
+            description="هذه أمثلة على الانطباع الذي نريد أن يخرج به العميل من التجربة."
+            centered
+          />
+
+          <div className="grid-3">
+            {testimonials.map((item) => (
+              <div key={item.name} className="testimonial-card">
+                <p className="testimonial-text">“{item.text}”</p>
+                <div className="testimonial-name">{item.name}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section">
+        <div className="container">
+          <SectionHeader
+            eyebrow="الأسئلة الشائعة"
+            title="كل شيء واضح قبل أن تبدأ"
+            description="أهم الأسئلة التي قد تدور في بالك قبل إرسال الطلب."
+            centered
+          />
+
+          <div className="faq-list">
+            {faqs.map((item) => (
+              <div key={item.question} className="faq-item">
+                <h3>{item.question}</h3>
+                <p>{item.answer}</p>
               </div>
             ))}
           </div>
