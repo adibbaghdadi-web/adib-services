@@ -19,13 +19,15 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="site-header">
+    <header className="site-header premium-header">
       <div className="container nav-wrap">
         <Link href="/" className="brand">
-          <Image src="/logo.svg" alt="ADIB" width={52} height={52} />
+          <div className="brand-box">
+            <Image src="/logo.svg" alt="ADIB" width={54} height={54} />
+          </div>
         </Link>
 
-        <nav className="desktop-nav">
+        <nav className="desktop-nav premium-nav">
           {links.map((link) => (
             <Link
               key={link.href}
@@ -38,7 +40,7 @@ export default function Navbar() {
         </nav>
 
         <div className="nav-actions">
-          <Link href="/request" className="button button-light">
+          <Link href="/request" className="button button-light nav-cta">
             اطلب الآن
           </Link>
         </div>
@@ -70,7 +72,7 @@ export default function Navbar() {
             <Link
               href="/request"
               onClick={() => setMenuOpen(false)}
-              className="button button-light full-width"
+              className="button button-primary full-width"
             >
               اطلب الآن
             </Link>

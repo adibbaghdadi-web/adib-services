@@ -3,18 +3,19 @@ import { siteConfig } from "@/data/site";
 
 export default function Footer() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer premium-footer">
       <div className="container footer-grid">
-        <div>
-          <h3>{siteConfig.name}</h3>
+        <div className="footer-brand">
+          <span className="footer-badge">{siteConfig.name}</span>
+          <h3>واجهة مرتبة لخدمات عملية واحترافية</h3>
           <p>
-            خدمات رقمية وعملية بشكل احترافي، مع تجربة واضحة من أول زيارة حتى إرسال
-            الطلب.
+            تصميم، مواقع، ذكاء اصطناعي، وتوصيل طلبات — في تجربة واضحة تعطي العميل
+            الثقة من أول زيارة حتى إرسال الطلب.
           </p>
         </div>
 
         <div>
-          <h4>روابط سريعة</h4>
+          <h4>الروابط</h4>
           <nav className="footer-links">
             <Link href="/">الرئيسية</Link>
             <Link href="/services">الخدمات</Link>
@@ -38,7 +39,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="footer-bottom">
+      <div className="footer-bottom premium-footer-bottom">
         © {new Date().getFullYear()} {siteConfig.name} — جميع الحقوق محفوظة
       </div>
     </footer>
