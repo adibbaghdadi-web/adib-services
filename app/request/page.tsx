@@ -56,7 +56,6 @@ export default function RequestPage() {
 الاسم: ${fullName || "-"}
 رقم الهاتف: ${phone || "-"}
 البريد الإلكتروني: ${email || "-"}
-نوع الطلب: ${serviceType}
 اسم المطعم: ${restaurantName || "-"}
 المدينة: ${city || "-"}
 العنوان: ${location || "-"}
@@ -69,7 +68,6 @@ export default function RequestPage() {
 الاسم: ${fullName || "-"}
 رقم الهاتف: ${phone || "-"}
 البريد الإلكتروني: ${email || "-"}
-نوع الطلب: ${serviceType}
 الخدمة المطلوبة: ${service || "-"}
 المدينة: ${city || "-"}
 الموعد المطلوب: ${deadline || "-"}
@@ -98,40 +96,86 @@ export default function RequestPage() {
     <main>
       <Navbar />
 
+      <section className="hero request-hero">
+        <div className="hero-bg" />
+        <div className="container hero-content">
+          <span className="hero-badge">طلب خدمة</span>
+
+          <h1 className="hero-title">
+            أرسل طلبك بشكل
+            <span className="hero-highlight"> واضح ومرتب</span>
+          </h1>
+
+          <p className="hero-subtitle">
+            اختر نوع الطلب، اكتب التفاصيل، ثم أرسل كل شيء مباشرة عبر واتساب
+            بطريقة منظمة وسريعة.
+          </p>
+        </div>
+      </section>
+
       <section className="page-section">
         <div className="container">
-          <SectionHeader
-            eyebrow="طلب خدمة"
-            title="أرسل طلبك بشكل مرتب"
-            description="املأ التفاصيل بوضوح، ثم أرسل الطلب عبر واتساب من هذا المكان فقط."
-            centered
-          />
+          <div className="request-top-boxes">
+            <div className="request-mini-box">
+              <span className="request-mini-title">طلب واضح</span>
+              <p>كل التفاصيل مرتبة في رسالة واحدة بدون تشويش.</p>
+            </div>
+
+            <div className="request-mini-box">
+              <span className="request-mini-title">توصيل طعام</span>
+              <p>السعر النهائي = سعر الطلب + سعر التوصيل.</p>
+            </div>
+
+            <div className="request-mini-box">
+              <span className="request-mini-title">تنفيذ سريع</span>
+              <p>تجربة مباشرة وسهلة من أول خطوة حتى الإرسال.</p>
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="page-section">
         <div className="container">
           <div className="grid-2 request-layout">
-            <div className="info-box">
-              <h3>كيف يتم الطلب؟</h3>
-              <p>1. اختر نوع الطلب: خدمة رقمية أو توصيل مطاعم.</p>
-              <p>2. اكتب البيانات الأساسية بشكل واضح.</p>
-              <p>3. إذا كان الطلب من مطعم، اكتب اسم المطعم والتكلفة.</p>
-              <p>4. اضغط إرسال عبر واتساب وسيصلني الطلب جاهزًا.</p>
+            <div className="request-side">
+              <div className="info-box request-side-box">
+                <h3>كيف يتم الطلب؟</h3>
+                <div className="request-steps-list">
+                  <div className="request-step-item">
+                    <span>1</span>
+                    <p>اختر نوع الطلب: خدمة رقمية أو توصيل مطاعم.</p>
+                  </div>
 
-              <div className="request-note">
-                <strong>مهم:</strong>
+                  <div className="request-step-item">
+                    <span>2</span>
+                    <p>اكتب البيانات والتفاصيل بشكل واضح.</p>
+                  </div>
+
+                  <div className="request-step-item">
+                    <span>3</span>
+                    <p>اضغط إرسال عبر واتساب وسيصلني الطلب جاهزًا.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div className="info-box request-side-box highlight-box">
+                <h3>مهم في توصيل المطاعم</h3>
+                <p className="highlight-text big-highlight">
+                  السعر النهائي = سعر الطلب + سعر التوصيل
+                </p>
                 <p>
-                  في خدمة توصيل المطاعم:
-                  <br />
-                  <span className="highlight-text">
-                    السعر النهائي = سعر الطلب + سعر التوصيل
-                  </span>
+                  اكتب اسم المطعم، العنوان، والتفاصيل بوضوح حتى يكون التنفيذ أسرع
+                  وأدق.
                 </p>
               </div>
             </div>
 
-            <div className="form-card">
+            <div className="form-card request-form-card">
+              <div className="request-form-head">
+                <h3>بيانات الطلب</h3>
+                <p>املأ الحقول التالية ثم أرسل الطلب مباشرة.</p>
+              </div>
+
               <div className="form-grid">
                 <div className="form-field">
                   <label>الاسم الكامل</label>
@@ -251,7 +295,7 @@ export default function RequestPage() {
 
                     <div className="form-field form-full">
                       <label>الإجمالي المتوقع</label>
-                      <div className="total-box">{totalPrice}</div>
+                      <div className="total-box total-box-strong">{totalPrice}</div>
                     </div>
                   </>
                 )}
@@ -270,7 +314,7 @@ export default function RequestPage() {
                     href={whatsappUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="button button-primary full-width"
+                    className="button button-primary full-width request-submit"
                   >
                     إرسال الطلب عبر واتساب
                   </a>
