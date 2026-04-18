@@ -9,29 +9,50 @@ export default function PricingPage() {
     <main>
       <Navbar />
 
-      <section className="page-section">
-        <div className="container">
-          <SectionHeader
-            eyebrow="الأسعار"
-            title="أسعار مبدئية واضحة"
-            description="الأسعار التالية مبدئية وتختلف حسب حجم الطلب والتفاصيل ومدة التنفيذ."
-            centered
-          />
+      <section className="hero pricing-hero">
+        <div className="hero-bg" />
+        <div className="container hero-content">
+          <span className="hero-badge">الأسعار</span>
+
+          <h1 className="hero-title">
+            أسعار مبدئية
+            <span className="hero-highlight"> واضحة ومرتبة</span>
+          </h1>
+
+          <p className="hero-subtitle">
+            الأسعار التالية تساعدك على أخذ فكرة أولية عن الخدمة، وقد تختلف حسب
+            التفاصيل، حجم الطلب، ومدة التنفيذ.
+          </p>
         </div>
       </section>
 
       <section className="page-section">
         <div className="container">
-          <div className="grid-2">
+          <SectionHeader
+            eyebrow="التسعير"
+            title="اختر الخدمة المناسبة لميزانيتك"
+            description="كل خدمة مع سعر مبدئي، مدة تنفيذ، ونقاط توضح ما الذي ستحصل عليه."
+            centered
+          />
+
+          <div className="grid-2 pricing-grid">
             {services.map((service) => (
-              <article key={service.slug} className="card">
-                <div className="card-top">
-                  <h3>{service.title}</h3>
-                  <span className="price-badge">يبدأ من {service.priceFrom}</span>
+              <article key={service.slug} className="pricing-card">
+                <div className="pricing-card-top">
+                  <div>
+                    <h3>{service.title}</h3>
+                    <p className="pricing-short">{service.shortDescription}</p>
+                  </div>
+
+                  <div className="pricing-price-wrap">
+                    <span className="pricing-price-label">يبدأ من</span>
+                    <strong className="pricing-price">{service.priceFrom}</strong>
+                  </div>
                 </div>
 
-                <p className="card-description">{service.shortDescription}</p>
-                <p className="card-delivery">مدة التنفيذ: {service.delivery}</p>
+                <div className="pricing-meta">
+                  <span>مدة التنفيذ: {service.delivery}</span>
+                </div>
 
                 <ul className="feature-list">
                   {service.features.map((feature) => (
@@ -39,11 +60,42 @@ export default function PricingPage() {
                   ))}
                 </ul>
 
-                <Link href={`/request?service=${service.slug}`} className="button button-light">
-                  اطلب الآن
-                </Link>
+                <div className="pricing-actions">
+                  <Link
+                    href={`/request?service=${service.slug}`}
+                    className="button button-primary"
+                  >
+                    اطلب الآن
+                  </Link>
+
+                  <Link href="/contact" className="button button-outline">
+                    استفسار
+                  </Link>
+                </div>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section section-dark">
+        <div className="container">
+          <div className="info-box cta-box cta-strong">
+            <h3>عندك طلب خاص أو تفاصيل مختلفة؟</h3>
+            <p>
+              إذا كانت خدمتك تحتاج تسعيرًا مختلفًا أو تنفيذًا خاصًا، أرسل طلبك
+              مباشرة وسأرتب لك السعر المناسب حسب الحالة.
+            </p>
+
+            <div className="hero-buttons">
+              <Link href="/request" className="button button-primary">
+                أرسل الطلب الآن
+              </Link>
+
+              <Link href="/services" className="button button-outline">
+                راجع الخدمات
+              </Link>
+            </div>
           </div>
         </div>
       </section>
