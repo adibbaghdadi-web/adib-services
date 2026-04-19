@@ -13,7 +13,7 @@ export default function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={centered ? "section-header section-header-center" : "section-header"}>
-      {eyebrow ? <span className="eyebrow">{eyebrow}</span> : null}
+      {eyebrow ? <span className="eyebrow section-eyebrow">{eyebrow}</span> : null}
       <h2>{title}</h2>
       {description ? <p>{description}</p> : null}
     </div>

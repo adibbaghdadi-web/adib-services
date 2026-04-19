@@ -3,25 +3,43 @@ import { ServiceItem } from "@/data/services";
 
 export default function ServiceCard({ service }: { service: ServiceItem }) {
   return (
-    <article className="card">
-      <div className="card-top">
-        <h3>{service.title}</h3>
-        <span className="price-badge">يبدأ من {service.priceFrom}</span>
+    <article className="service-card-premium">
+      <div className="service-card-head">
+        <div>
+          <span className="service-mini-badge">خدمة احترافية</span>
+          <h3>{service.title}</h3>
+        </div>
+
+        <div className="service-price-box">
+          <span>يبدأ من</span>
+          <strong>{service.priceFrom}</strong>
+        </div>
       </div>
 
-      <p className="card-description">{service.description}</p>
+      <p className="service-card-text">{service.description}</p>
 
-      <p className="card-delivery">مدة التنفيذ: {service.delivery}</p>
+      <div className="service-meta">
+        <span>مدة التنفيذ: {service.delivery}</span>
+      </div>
 
-      <ul className="feature-list">
+      <ul className="service-feature-list">
         {service.features.map((feature) => (
-          <li key={feature}>✔ {feature}</li>
+          <li key={feature}>
+            <span className="feature-dot">✓</span>
+            <span>{feature}</span>
+          </li>
         ))}
       </ul>
 
-      <Link href={`/request?service=${service.slug}`} className="button button-light">
-        اطلب هذه الخدمة
-      </Link>
+      <div className="service-card-actions">
+        <Link href={`/request?service=${service.slug}`} className="button button-primary">
+          اطلب هذه الخدمة
+        </Link>
+
+        <Link href="/pricing" className="button button-outline">
+          راجع السعر
+        </Link>
+      </div>
     </article>
   );
 }
