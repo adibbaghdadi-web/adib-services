@@ -1,331 +1,89 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-import SectionHeader from "@/components/SectionHeader";
-import { siteConfig } from "@/data/site";
-
-function serviceSlugToLabel(slug: string) {
-  const map: Record<string, string> = {
-    "social-media-design": "تصميم سوشيال ميديا",
-    "logo-branding": "تصميم شعار وهوية",
-    "website-development": "تطوير مواقع",
-    "ai-services": "خدمات الذكاء الاصطناعي",
-    "food-delivery": "توصيل طلبات مطاعم",
-  };
-
-  return map[slug] || slug;
-}
+import { useState } from "react";
 
 export default function RequestPage() {
-  const [fullName, setFullName] = useState("");
-  const [phone, setPhone] = useState("");
-  const [email, setEmail] = useState("");
-  const [serviceType, setServiceType] = useState("خدمة رقمية");
-  const [service, setService] = useState("");
-  const [city, setCity] = useState("");
-  const [location, setLocation] = useState("");
+  const [name, setName] = useState("");
+  const [service, setService] = useState("تصميم شعار");
   const [details, setDetails] = useState("");
-  const [deadline, setDeadline] = useState("");
-  const [restaurantName, setRestaurantName] = useState("");
-  const [orderCost, setOrderCost] = useState("");
-  const [deliveryFee, setDeliveryFee] = useState("10");
+  const [budget, setBudget] = useState("");
 
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const serviceParam = params.get("service") || "";
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
 
-    if (serviceParam) {
-      if (serviceParam === "food-delivery") {
-        setServiceType("توصيل مطاعم");
-      } else {
-        setServiceType("خدمة رقمية");
-        setService(serviceSlugToLabel(serviceParam));
-      }
-    }
-  }, []);
+    const message = `
+🚀 طلب جديد من الموقع
 
-  const totalPrice = Number(orderCost || 0) + Number(deliveryFee || 0);
+👤 الاسم: ${name}
+🎯 الخدمة: ${service}
+💰 الميزانية: ${budget || "غير محدد"}
 
-  const whatsappUrl = useMemo(() => {
-    const message =
-      serviceType === "توصيل مطاعم"
-        ? `مرحبا، أريد طلب خدمة توصيل طعام
+📝 التفاصيل:
+${details}
+    `;
 
-الاسم: ${fullName || "-"}
-رقم الهاتف: ${phone || "-"}
-البريد الإلكتروني: ${email || "-"}
-اسم المطعم: ${restaurantName || "-"}
-المدينة: ${city || "-"}
-العنوان: ${location || "-"}
-تفاصيل الطلب: ${details || "-"}
-سعر الطلب: ${orderCost || "0"}
-سعر التوصيل: ${deliveryFee || "0"}
-الإجمالي المتوقع: ${totalPrice}`
-        : `مرحبا، أريد طلب خدمة
-
-الاسم: ${fullName || "-"}
-رقم الهاتف: ${phone || "-"}
-البريد الإلكتروني: ${email || "-"}
-الخدمة المطلوبة: ${service || "-"}
-المدينة: ${city || "-"}
-الموعد المطلوب: ${deadline || "-"}
-تفاصيل الطلب: ${details || "-"}`;
-
-    return `https://wa.me/${siteConfig.whatsappNumber}?text=${encodeURIComponent(
+    const whatsappUrl = `https://wa.me/90562966530?text=${encodeURIComponent(
       message
     )}`;
-  }, [
-    fullName,
-    phone,
-    email,
-    serviceType,
-    service,
-    city,
-    location,
-    details,
-    deadline,
-    restaurantName,
-    orderCost,
-    deliveryFee,
-    totalPrice,
-  ]);
+
+    window.open(whatsappUrl, "_blank");
+  }
 
   return (
-    <main>
-      <Navbar />
+    <main className="min-h-screen bg-[#07070a] text-white flex items-center justify-center px-4">
+      <div className="w-full max-w-xl">
+        <h1 className="text-3xl font-bold mb-6 text-center">
+          اطلب خدمتك الآن
+        </h1>
 
-      <section className="hero request-hero">
-        <div className="hero-bg" />
-        <div className="container hero-content">
-          <span className="hero-badge">طلب خدمة</span>
+        <form
+          onSubmit={handleSubmit}
+          className="space-y-4 bg-white/5 p-6 rounded-2xl border border-white/10"
+        >
+          <input
+            type="text"
+            placeholder="اسمك"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            className="w-full p-3 rounded-lg bg-black border border-white/10"
+            required
+          />
 
-          <h1 className="hero-title">
-            أرسل طلبك بشكل
-            <span className="hero-highlight"> واضح ومرتب</span>
-          </h1>
+          <select
+            value={service}
+            onChange={(e) => setService(e.target.value)}
+            className="w-full p-3 rounded-lg bg-black border border-white/10"
+          >
+            <option>تصميم شعار</option>
+            <option>تصميم سوشيال ميديا</option>
+            <option>تصميم موقع</option>
+            <option>خدمة أخرى</option>
+          </select>
 
-          <p className="hero-subtitle">
-            اختر نوع الطلب، اكتب التفاصيل، ثم أرسل كل شيء مباشرة عبر واتساب
-            بطريقة منظمة وسريعة.
-          </p>
-        </div>
-      </section>
+          <input
+            type="text"
+            placeholder="الميزانية (اختياري)"
+            value={budget}
+            onChange={(e) => setBudget(e.target.value)}
+            className="w-full p-3 rounded-lg bg-black border border-white/10"
+          />
 
-      <section className="page-section">
-        <div className="container">
-          <div className="request-top-boxes">
-            <div className="request-mini-box">
-              <span className="request-mini-title">طلب واضح</span>
-              <p>كل التفاصيل مرتبة في رسالة واحدة بدون تشويش.</p>
-            </div>
+          <textarea
+            placeholder="اكتب تفاصيل طلبك..."
+            value={details}
+            onChange={(e) => setDetails(e.target.value)}
+            className="w-full p-3 rounded-lg bg-black border border-white/10 h-32"
+            required
+          />
 
-            <div className="request-mini-box">
-              <span className="request-mini-title">توصيل طعام</span>
-              <p>السعر النهائي = سعر الطلب + سعر التوصيل.</p>
-            </div>
-
-            <div className="request-mini-box">
-              <span className="request-mini-title">تنفيذ سريع</span>
-              <p>تجربة مباشرة وسهلة من أول خطوة حتى الإرسال.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="page-section">
-        <div className="container">
-          <div className="grid-2 request-layout">
-            <div className="request-side">
-              <div className="info-box request-side-box">
-                <h3>كيف يتم الطلب؟</h3>
-                <div className="request-steps-list">
-                  <div className="request-step-item">
-                    <span>1</span>
-                    <p>اختر نوع الطلب: خدمة رقمية أو توصيل مطاعم.</p>
-                  </div>
-
-                  <div className="request-step-item">
-                    <span>2</span>
-                    <p>اكتب البيانات والتفاصيل بشكل واضح.</p>
-                  </div>
-
-                  <div className="request-step-item">
-                    <span>3</span>
-                    <p>اضغط إرسال عبر واتساب وسيصلني الطلب جاهزًا.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="info-box request-side-box highlight-box">
-                <h3>مهم في توصيل المطاعم</h3>
-                <p className="highlight-text big-highlight">
-                  السعر النهائي = سعر الطلب + سعر التوصيل
-                </p>
-                <p>
-                  اكتب اسم المطعم، العنوان، والتفاصيل بوضوح حتى يكون التنفيذ أسرع
-                  وأدق.
-                </p>
-              </div>
-            </div>
-
-            <div className="form-card request-form-card">
-              <div className="request-form-head">
-                <h3>بيانات الطلب</h3>
-                <p>املأ الحقول التالية ثم أرسل الطلب مباشرة.</p>
-              </div>
-
-              <div className="form-grid">
-                <div className="form-field">
-                  <label>الاسم الكامل</label>
-                  <input
-                    value={fullName}
-                    onChange={(e) => setFullName(e.target.value)}
-                    placeholder="اكتب اسمك"
-                  />
-                </div>
-
-                <div className="form-field">
-                  <label>رقم الهاتف</label>
-                  <input
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                    placeholder="اكتب رقمك"
-                  />
-                </div>
-
-                <div className="form-field">
-                  <label>البريد الإلكتروني</label>
-                  <input
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="اكتب بريدك"
-                  />
-                </div>
-
-                <div className="form-field">
-                  <label>نوع الطلب</label>
-                  <select
-                    value={serviceType}
-                    onChange={(e) => setServiceType(e.target.value)}
-                  >
-                    <option>خدمة رقمية</option>
-                    <option>توصيل مطاعم</option>
-                  </select>
-                </div>
-
-                {serviceType === "خدمة رقمية" ? (
-                  <>
-                    <div className="form-field">
-                      <label>الخدمة المطلوبة</label>
-                      <input
-                        value={service}
-                        onChange={(e) => setService(e.target.value)}
-                        placeholder="مثال: تصميم سوشيال ميديا"
-                      />
-                    </div>
-
-                    <div className="form-field">
-                      <label>الموعد المطلوب</label>
-                      <input
-                        value={deadline}
-                        onChange={(e) => setDeadline(e.target.value)}
-                        placeholder="مثال: خلال يومين"
-                      />
-                    </div>
-
-                    <div className="form-field form-full">
-                      <label>المدينة</label>
-                      <input
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        placeholder="مثال: اسطنبول"
-                      />
-                    </div>
-                  </>
-                ) : (
-                  <>
-                    <div className="form-field">
-                      <label>اسم المطعم</label>
-                      <input
-                        value={restaurantName}
-                        onChange={(e) => setRestaurantName(e.target.value)}
-                        placeholder="اكتب اسم المطعم"
-                      />
-                    </div>
-
-                    <div className="form-field">
-                      <label>المدينة</label>
-                      <input
-                        value={city}
-                        onChange={(e) => setCity(e.target.value)}
-                        placeholder="مثال: اسطنبول"
-                      />
-                    </div>
-
-                    <div className="form-field form-full">
-                      <label>العنوان / الموقع</label>
-                      <input
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                        placeholder="اكتب عنوان التوصيل"
-                      />
-                    </div>
-
-                    <div className="form-field">
-                      <label>سعر الطلب</label>
-                      <input
-                        type="number"
-                        value={orderCost}
-                        onChange={(e) => setOrderCost(e.target.value)}
-                        placeholder="مثال: 250"
-                      />
-                    </div>
-
-                    <div className="form-field">
-                      <label>سعر التوصيل</label>
-                      <input
-                        type="number"
-                        value={deliveryFee}
-                        onChange={(e) => setDeliveryFee(e.target.value)}
-                        placeholder="مثال: 50"
-                      />
-                    </div>
-
-                    <div className="form-field form-full">
-                      <label>الإجمالي المتوقع</label>
-                      <div className="total-box total-box-strong">{totalPrice}</div>
-                    </div>
-                  </>
-                )}
-
-                <div className="form-field form-full">
-                  <label>تفاصيل الطلب</label>
-                  <textarea
-                    value={details}
-                    onChange={(e) => setDetails(e.target.value)}
-                    placeholder="اكتب تفاصيل الطلب بشكل واضح"
-                  />
-                </div>
-
-                <div className="form-full">
-                  <a
-                    href={whatsappUrl}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="button button-primary full-width request-submit"
-                  >
-                    إرسال الطلب عبر واتساب
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <Footer />
+          <button
+            type="submit"
+            className="w-full bg-green-500 hover:bg-green-600 transition p-3 rounded-lg font-bold"
+          >
+            إرسال الطلب عبر واتساب
+          </button>
+        </form>
+      </div>
     </main>
   );
 }
