@@ -2,7 +2,8 @@ export const siteConfig = {
   name: "ADIB",
   title: "ADIB | خدمات احترافية",
   description:
-    "منصة خدمات احترافية للتصميم، تطوير المواقع، وخدمات الذكاء الاصطناعي، مع تجربة طلب مرتبة وواضحة.",
+    "خدمات احترافية للتصميم، تطوير المواقع، الذكاء الاصطناعي، وتوصيل الطلبات.",
+  url: "https://adib-services.vercel.app",
   email: "edip.baghdady99@gmail.com",
   instagram: "https://www.instagram.com/adibbaghdadyyy",
   instagramHandle: "@adibbaghdadyyy",
