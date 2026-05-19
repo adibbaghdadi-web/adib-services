@@ -1,19 +1,20 @@
-import { CapacitorConfig } from '@capacitor/cli';
+import type { CapacitorConfig } from "@capacitor/cli";
 
 const config: CapacitorConfig = {
-  appId: 'com.adib.services',
-  appName: 'ADIB',
-  webDir: 'out',
+  appId: "com.adib.services",
+  appName: "ADIB",
+  webDir: "public",
   server: {
-    androidScheme: 'https'
+    url: "https://adib-services.vercel.app",
+    cleartext: false,
   },
   plugins: {
     SplashScreen: {
-      launchShowDuration: 3000,
-      backgroundColor: "#000000",
-      showSpinner: false
-    }
-  }
+      launchShowDuration: 2500,
+      backgroundColor: "#07070a",
+      showSpinner: false,
+    },
+  },
 };
 
 export default config;
