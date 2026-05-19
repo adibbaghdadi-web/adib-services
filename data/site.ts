@@ -10,6 +10,8 @@ export const siteConfig = {
 
   email: "edip.baghdady99@gmail.com",
 
+  city: "Istanbul",
+
   instagram: "https://www.instagram.com/adibbaghdadyyy",
 
   instagramHandle: "@adibbaghdadyyy",
