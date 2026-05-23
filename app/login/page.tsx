@@ -1,24 +1,26 @@
 "use client";
 
-import { signInWithPopup } from "firebase/auth";
+import { useEffect } from "react";
+import { getRedirectResult, signInWithRedirect } from "firebase/auth";
 import { auth, googleProvider } from "@/lib/firebase";
 
 export default function LoginPage() {
+  useEffect(() => {
+    getRedirectResult(auth).then((result) => {
+      if (result?.user) {
+        window.location.href = "/account";
+      }
+    });
+  }, []);
+
   async function handleGoogleLogin() {
-    try {
-      await signInWithPopup(auth, googleProvider);
-      window.location.href = "/account";
-    } catch (error) {
-      console.error(error);
-      alert("حدث خطأ أثناء تسجيل الدخول");
-    }
+    await signInWithRedirect(auth, googleProvider);
   }
 
   return (
     <main className="login-page">
       <section className="login-card">
         <div className="login-logo">A</div>
-
         <p className="login-eyebrow">ADIB Account</p>
 
         <h1>تسجيل الدخول</h1>
@@ -28,7 +30,6 @@ export default function LoginPage() {
         </p>
 
         <button type="button" className="login-google" onClick={handleGoogleLogin}>
-          <span>G</span>
           تسجيل الدخول عبر Google
         </button>
 
