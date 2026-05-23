@@ -39,7 +39,7 @@ export default function Navbar() {
           ))}
 
           <Link href="/login" className="nav-link">
-            تسجيل الدخول
+             حسابي
           </Link>
         </nav>
 
