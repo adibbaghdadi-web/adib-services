@@ -37,22 +37,26 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
+
+          <Link href="/login" className="nav-link">
+            تسجيل الدخول
+          </Link>
         </nav>
 
         <div className="nav-actions">
           <Link href="/request" className="button button-light nav-cta">
             اطلب الآن
           </Link>
-        </div>
 
-        <button
-          className="menu-toggle"
-          onClick={() => setMenuOpen((prev) => !prev)}
-          aria-label="فتح القائمة"
-          type="button"
-        >
-          {menuOpen ? "✕" : "☰"}
-        </button>
+          <button
+            className="menu-toggle"
+            onClick={() => setMenuOpen((prev) => !prev)}
+            aria-label="فتح القائمة"
+            type="button"
+          >
+            {menuOpen ? "✕" : "☰"}
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
@@ -68,6 +72,14 @@ export default function Navbar() {
                 {link.label}
               </Link>
             ))}
+
+            <Link
+              href="/login"
+              onClick={() => setMenuOpen(false)}
+              className="mobile-link"
+            >
+              تسجيل الدخول
+            </Link>
 
             <Link
               href="/request"
