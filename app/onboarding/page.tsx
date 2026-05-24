@@ -9,6 +9,7 @@ import { auth, db } from "@/lib/firebase";
 export default function OnboardingPage() {
   const router = useRouter();
   const [user, setUser] = useState<User | null>(null);
+  const [saving, setSaving] = useState(false);
 
   useEffect(() => {
     return onAuthStateChanged(auth, (currentUser) => {
@@ -21,8 +22,10 @@ export default function OnboardingPage() {
     });
   }, [router]);
 
-  async function chooseRole(role: "client" | "partner") {
+  async function chooseRole(role: "client" | "provider") {
     if (!user) return;
+
+    setSaving(true);
 
     await setDoc(
       doc(db, "users", user.uid),
@@ -32,6 +35,7 @@ export default function OnboardingPage() {
         email: user.email || "",
         photoURL: user.photoURL || "",
         role,
+        status: role === "provider" ? "pending_review" : "active",
         createdAt: serverTimestamp(),
         updatedAt: serverTimestamp(),
       },
@@ -43,25 +47,39 @@ export default function OnboardingPage() {
 
   return (
     <main className="login-page">
-      <section className="login-card" style={{ maxWidth: 720 }}>
+      <section className="login-card" style={{ maxWidth: 760 }}>
         <div className="login-logo">A</div>
-        <p className="login-eyebrow">ADIB Account</p>
+
+        <p className="login-eyebrow">ADIB Platform</p>
 
         <h1>اختر نوع حسابك</h1>
 
         <p className="login-text">
-          اختر هل تريد طلب خدمات كعميل، أو تريد مشاركة أعمالك والعمل داخل المنصة.
+          حتى نقدم لك تجربة مناسبة، اختر هل تريد طلب خدمة كعميل
+          أم تريد الانضمام كمقدم خدمة وعرض أعمالك.
         </p>
 
-        <div style={{ display: "grid", gap: 16 }}>
-          <button className="login-google" onClick={() => chooseRole("client")}>
-            أنا عميل وأريد طلب خدمة
+        <div style={{ display: "grid", gap: 18, marginTop: 24 }}>
+          <button
+            className="login-google"
+            disabled={saving}
+            onClick={() => chooseRole("client")}
+          >
+            أريد طلب خدمة
           </button>
 
-          <button className="login-google" onClick={() => chooseRole("partner")}>
-            أريد مشاركة أعمالي والعمل مع ADIB
+          <button
+            className="login-google"
+            disabled={saving}
+            onClick={() => chooseRole("provider")}
+          >
+            أريد أن أصبح مقدم خدمة
           </button>
         </div>
+
+        <p className="login-footer">
+          يمكنك تعديل بيانات حسابك لاحقًا من لوحة الحساب.
+        </p>
       </section>
     </main>
   );
